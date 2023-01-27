@@ -1,19 +1,25 @@
-
 import './App.css';
 import axios from "axios";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Main from './components/Main';
+
 function App() {
   const [posts, setPosts] = useState(null);
   useEffect(() => {
-const fetchData = async() => {
-  const {data} = await axios.get("/posts");
-  setPosts(data);
-};
+    const fetchData = async () => {
+      const { data } = await axios.get("/posts");
+      setPosts(data);
+    };
 
-fetchData();
+    fetchData();
   }, []);
 
-  return (<div>HELLO:{posts && JSON.stringify(posts)}  </div>
+  return (
+  <>
+    <Navbar />
+    <Main />
+  </> 
   );
 }
 
